@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* RDR2 Western Color Palette */
+    --background: 30 25% 8%;
+    --foreground: 40 30% 92%;
+
+    --card: 30 20% 12%;
+    --card-foreground: 40 30% 92%;
+
+    --popover: 30 20% 12%;
+    --popover-foreground: 40 30% 92%;
+
+    --primary: 0 60% 35%;
+    --primary-foreground: 40 30% 95%;
+
+    --secondary: 30 40% 25%;
+    --secondary-foreground: 40 30% 95%;
+
+    --muted: 30 20% 20%;
+    --muted-foreground: 40 15% 60%;
+
+    --accent: 45 80% 50%;
+    --accent-foreground: 30 25% 10%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 40 30% 95%;
+
+    --border: 30 25% 18%;
+    --input: 30 25% 18%;
+    --ring: 45 80% 50%;
+
+    --radius: 0.5rem;
+
+    /* Western Gradients */
+    --gradient-sunset: linear-gradient(135deg, hsl(15 80% 45%) 0%, hsl(0 60% 35%) 50%, hsl(30 25% 15%) 100%);
+    --gradient-dust: linear-gradient(180deg, hsl(30 25% 8% / 0) 0%, hsl(30 25% 8%) 100%);
+    --gradient-parchment: linear-gradient(135deg, hsl(40 35% 88%) 0%, hsl(35 30% 80%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45 80% 60%) 0%, hsl(35 70% 45%) 100%);
+
+    /* Western Shadows */
+    --shadow-smoke: 0 10px 40px -10px hsl(30 25% 8% / 0.6);
+    --shadow-gold: 0 0 30px hsl(45 80% 50% / 0.3);
+    --shadow-deep: 0 20px 60px -15px hsl(0 0% 0% / 0.8);
+
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 30 20% 12%;
+    --sidebar-foreground: 40 30% 90%;
+    --sidebar-primary: 0 60% 35%;
+    --sidebar-primary-foreground: 40 30% 95%;
+    --sidebar-accent: 30 25% 18%;
+    --sidebar-accent-foreground: 40 30% 90%;
+    --sidebar-border: 30 25% 18%;
+    --sidebar-ring: 45 80% 50%;
+  }
+
+  .dark {
+    --background: 30 25% 8%;
+    --foreground: 40 30% 92%;
+
+    --card: 30 20% 12%;
+    --card-foreground: 40 30% 92%;
+
+    --popover: 30 20% 12%;
+    --popover-foreground: 40 30% 92%;
+
+    --primary: 0 60% 35%;
+    --primary-foreground: 40 30% 95%;
+
+    --secondary: 30 40% 25%;
+    --secondary-foreground: 40 30% 95%;
+
+    --muted: 30 20% 20%;
+    --muted-foreground: 40 15% 60%;
+
+    --accent: 45 80% 50%;
+    --accent-foreground: 30 25% 10%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 40 30% 95%;
+
+    --border: 30 25% 18%;
+    --input: 30 25% 18%;
+    --ring: 45 80% 50%;
+
+    --sidebar-background: 30 20% 12%;
+    --sidebar-foreground: 40 30% 90%;
+    --sidebar-primary: 0 60% 35%;
+    --sidebar-primary-foreground: 40 30% 95%;
+    --sidebar-accent: 30 25% 18%;
+    --sidebar-accent-foreground: 40 30% 90%;
+    --sidebar-border: 30 25% 18%;
+    --sidebar-ring: 45 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Playfair Display', serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+  }
+
+  /* Western Textures */
+  .parchment {
+    background: var(--gradient-parchment);
+    position: relative;
+  }
+
+  .parchment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(35 20% 70% / 0.1) 2px, hsl(35 20% 70% / 0.1) 4px);
+    pointer-events: none;
+  }
+
+  /* Smoke/Dust Effect */
+  @keyframes smoke {
+    0% {
+      opacity: 0;
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100px) scale(1.5);
+    }
+  }
+
+  .smoke-effect {
+    animation: smoke 4s infinite;
+  }
+
+  /* Western Scroll */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}
